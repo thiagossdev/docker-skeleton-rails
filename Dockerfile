@@ -5,6 +5,9 @@ RUN sh -c "$(curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -)"
 # install depedencies
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client && npm install -g yarn && yarn set version berry
 
+# make 'docker logs' work
+ENV RAILS_LOG_TO_STDOUT=true
+
 ENV INSTALL_PATH /app
 WORKDIR $INSTALL_PATH
 COPY Gemfile $INSTALL_PATH/Gemfile
