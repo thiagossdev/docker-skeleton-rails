@@ -1,6 +1,10 @@
 # syntax=docker/dockerfile:1
-FROM ruby:3.0
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
+FROM ruby:3
+# add nodejs and yarn dependencies for the frontend
+RUN sh -c "$(curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -)"
+# install depedencies
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client && npm install -g yarn && yarn set version berry
+
 ENV INSTALL_PATH /app
 WORKDIR $INSTALL_PATH
 COPY Gemfile $INSTALL_PATH/Gemfile
