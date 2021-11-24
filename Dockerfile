@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM ruby:3
 # add nodejs and yarn dependencies for the frontend
-RUN sh -c "$(curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -)"
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
 # install depedencies
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client && npm install -g yarn && yarn set version berry
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client && npm install -g yarn
 
 # make 'docker logs' work
 ENV RAILS_LOG_TO_STDOUT=true

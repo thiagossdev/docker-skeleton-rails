@@ -9,6 +9,6 @@ PROJECT_DIR=
 git clone --depth=1 --branch=main git@github.com:thiagosxsantos/docker-skeleton-rails.git $PROJECT_DIR
 cd $PROJECT_DIR
 rm -Rf .git
-docker-compose run --no-deps web rails new . --force --js esbuild --css tailwind --database=postgresql
+docker-compose run --no-deps web rails new . --force --javascript esbuild --css tailwind --database=postgresql
 sudo chown -R $USER:$USER .
 ```
